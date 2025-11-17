@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Egzamin na Prokuratora - teoria cz. 2</title>
+  <link rel="stylesheet" href="https://ostrans.famisska.pl/doj/egzamin/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <h1>Egzamin na Prokuratora - teoria cz. 2</h1>
+      <button class="theme-toggle" id="themeToggle" title="Zmień motyw">🌙</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Start Page -->
+    <div id="startPage" class="page active">
+      <div class="container">
+        <div class="content-box">
+          <h2>Witaj w egzaminie!</h2>
+          <p>Jest to druga część teorii. Musisz odpowiedzieć poprawnie na <strong>minimum 80% pytań</strong>, aby zdać.</p>
+          <p>Formularz zawiera <strong>10 pytań</strong> losowo wybranych z bazy.</p>
+          <button class="btn btn-primary" id="startBtn">Kontynuuj</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiz Page -->
+    <div id="quizPage" class="page">
+      <div class="container">
+        <div class="quiz-wrapper">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <p class="question-counter"><span id="currentQuestion">1</span> / 10</p>
+
+          <form id="quizForm">
+            <div id="questionContainer"></div>
+            <div class="button-group">
+              <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">Poprzednie</button>
+              <button type="button" class="btn btn-primary" id="nextBtn">Dalej</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary Page -->
+    <div id="summaryPage" class="page">
+      <div class="container">
+        <div class="summary-box">
+          <h2>Podsumowanie egzaminu</h2>
+          <div class="score-display">
+            <p class="score-text">Twój wynik: <span id="scoreSpan">0</span> / 10</p>
+            <p class="percentage-text">Procent: <span id="percentageSpan">0</span>%</p>
+            <p id="statusText" class="status-text"></p>
+          </div>
+          <div id="answersSummary"></div>
+          <button class="btn btn-primary" id="restartBtn">Zacznij od nowa</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://ostrans.famisska.pl/doj/egzamin/public/app.js"></script>
+</body>
+</html>
