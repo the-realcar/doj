@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wyniki Egzaminu - Egzamin na Prokuratora</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <h1>Egzamin na Prokuratora - teoria cz. 2</h1>
+      <button class="theme-toggle" id="themeToggle" title="Zmień motyw">🌙</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="result-wrapper">
+        <h2>Podsumowanie Wyników</h2>
+
+        <div class="score-display">
+          <p class="score-text">Wynik: <span id="scoreSpan">0</span> / 10</p>
+          <p class="percentage-text">Procent: <span id="percentageSpan">0</span>%</p>
+          <p id="statusText" class="status-text"></p>
+        </div>
+
+        <div id="resultContainer"></div>
+
+        <div class="button-group">
+          <button class="btn btn-primary" id="backBtn">Wróć do Edycji</button>
+          <button class="btn btn-secondary" id="homeBtn">Strona Główna</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/result.js"></script>
+</body>
+</html>
