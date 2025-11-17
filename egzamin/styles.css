@@ -1,0 +1,627 @@
+@font-face {
+  font-family: 'Arca Majora 3';
+  src: url('https://ostrans.famisska.pl/ArcaMajora3-Bold.otf') format('opentype');
+  font-weight: bold;
+}
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --text-primary: #000000;
+  --text-secondary: #333333;
+  --border-color: #cccccc;
+  --accent-color: #007bff;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --button-hover: #0056b3;
+}
+
+body.dark-theme {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --border-color: #444444;
+  --accent-color: #4a9eff;
+  --button-hover: #3a7bc8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+  line-height: 1.6;
+}
+
+/* Header */
+.header {
+  background-color: var(--bg-secondary);
+  border-bottom: 2px solid var(--border-color);
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  font-family: 'Arca Majora 3', serif;
+  font-size: 28px;
+  color: var(--text-primary);
+}
+
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  font-size: 24px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.theme-toggle:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+}
+
+/* Main Layout */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: calc(100vh - 120px);
+}
+
+.container {
+  width: 100%;
+}
+
+/* Page Visibility */
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Content Box */
+.content-box {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+}
+
+.content-box h2 {
+  font-family: 'Arca Majora 3', serif;
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.content-box p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+}
+
+.content-box strong {
+  color: var(--accent-color);
+}
+
+/* Buttons */
+.btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  color: white;
+  margin-top: 20px;
+}
+
+.btn-primary:hover {
+  background-color: var(--button-hover);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: var(--border-color);
+  color: var(--text-primary);
+  margin-right: 10px;
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+/* Quiz */
+.quiz-wrapper {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--success-color);
+  width: 0%;
+  transition: width 0.3s;
+}
+
+.question-counter {
+  text-align: right;
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+#questionContainer {
+  margin-bottom: 30px;
+}
+
+.question-text {
+  font-family: 'Arca Majora 3', serif;
+  font-size: 20px;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.question-input,
+.question-textarea,
+.question-select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-size: 14px;
+}
+
+.question-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.options-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background-color: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.option-label:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--accent-color);
+}
+
+.option-label input[type="radio"] {
+  margin-right: 12px;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+.option-label input[type="radio"]:checked + span {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+/* Summary */
+.summary-box {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 40px;
+}
+
+.summary-box h2 {
+  font-family: 'Arca Majora 3', serif;
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: var(--text-primary);
+}
+
+.score-display {
+  background-color: var(--bg-primary);
+  border: 2px solid var(--accent-color);
+  border-radius: 8px;
+  padding: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.score-text,
+.percentage-text {
+  font-family: 'Arca Majora 3', serif;
+  font-size: 24px;
+  color: var(--text-primary);
+  margin: 10px 0;
+}
+
+.status-text {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+.status-text.passed {
+  color: var(--success-color);
+}
+
+.status-text.failed {
+  color: var(--error-color);
+}
+
+#answersSummary {
+  margin: 30px 0;
+}
+
+.answer-item {
+  background-color: var(--bg-primary);
+  border-left: 4px solid var(--accent-color);
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+.answer-question {
+  font-family: 'Arca Majora 3', serif;
+  font-size: 16px;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.answer-user {
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.answer-user strong {
+  color: var(--text-primary);
+}
+
+/* Links Box */
+.links-box {
+  background-color: var(--bg-primary);
+  border: 2px solid var(--accent-color);
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.links-box h3 {
+  font-family: 'Arca Majora 3', serif;
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.link-button {
+  display: inline-block;
+  padding: 14px 28px;
+  margin: 10px;
+  background-color: var(--accent-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  transition: all 0.3s;
+  border: 2px solid var(--accent-color);
+}
+
+.link-button:hover {
+  background-color: var(--button-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Edit Page */
+.edit-wrapper {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+  margin-top: 20px;
+}
+
+.edit-wrapper h2 {
+  font-family: 'Arca Majora 3', serif;
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: var(--text-primary);
+}
+
+.info-text {
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.edit-item {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.edit-question {
+  font-family: 'Arca Majora 3', serif;
+  font-size: 16px;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.edit-answer {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.edit-answer p {
+  margin: 5px 0;
+}
+
+.edit-points {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.edit-points label {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.points-input {
+  width: 70px;
+  padding: 8px;
+  border: 2px solid var(--accent-color);
+  border-radius: 4px;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.points-label {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.message {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 600;
+  display: none;
+}
+
+.message.success {
+  display: block;
+  background-color: rgba(40, 167, 69, 0.2);
+  color: var(--success-color);
+  border: 1px solid var(--success-color);
+}
+
+.message.error {
+  display: block;
+  background-color: rgba(220, 53, 69, 0.2);
+  color: var(--error-color);
+  border: 1px solid var(--error-color);
+}
+
+/* Result Page */
+.result-wrapper {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+  margin-top: 20px;
+}
+
+.result-wrapper h2 {
+  font-family: 'Arca Majora 3', serif;
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+}
+
+.result-item {
+  background-color: var(--bg-primary);
+  border-left: 4px solid var(--border-color);
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.result-item.correct {
+  border-left-color: var(--success-color);
+}
+
+.result-item.incorrect {
+  border-left-color: var(--error-color);
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 15px;
+}
+
+.result-number {
+  background-color: var(--accent-color);
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.result-question {
+  font-family: 'Arca Majora 3', serif;
+  font-size: 16px;
+  color: var(--text-primary);
+  font-weight: 600;
+  flex: 1;
+  line-height: 1.4;
+}
+
+.result-points {
+  font-weight: 600;
+  color: var(--accent-color);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.result-content {
+  margin-left: 45px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.result-content p {
+  margin: 8px 0;
+}
+
+.result-content strong {
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 20px;
+  }
+
+  main {
+    padding: 20px 10px;
+  }
+
+  .content-box {
+    padding: 20px;
+  }
+
+  .content-box h2 {
+    font-size: 24px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .btn-secondary {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .quiz-wrapper {
+    padding: 20px;
+  }
+
+  .link-button {
+    display: block;
+    width: calc(100% - 24px);
+    margin: 10px 0;
+  }
+
+  .edit-wrapper,
+  .result-wrapper {
+    padding: 20px;
+  }
+
+  .result-header {
+    flex-direction: column;
+  }
+
+  .edit-points {
+    flex-wrap: wrap;
+  }
+
+  .points-input {
+    width: 60px;
+  }
+}
